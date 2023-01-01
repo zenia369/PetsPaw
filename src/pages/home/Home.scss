@@ -1,0 +1,21 @@
+.home {
+  column-gap: 135px;
+  display: grid;
+  grid-template-columns: 1fr 680px;
+  justify-items: end;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pages {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-top: 10px;
+  width: 100%;
+  flex: 1;
+}
