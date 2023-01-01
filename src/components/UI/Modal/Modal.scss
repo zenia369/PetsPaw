@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba($color: #000000, $alpha: 0.5);
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px;
+  overflow-y: scroll;
+  &__content {
+    width: 680px;
+    background: #f8f8f7;
+    border-radius: 20px;
+    padding: 20px;
+    height: fit-content;
+    & > button {
+      margin-left: auto;
+    }
+  }
+}

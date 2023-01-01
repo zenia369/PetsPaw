@@ -1,0 +1,118 @@
+.upload {
+  margin-top: 40px;
+  &__title {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 52px;
+    color: #1d1d1d;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  &__subTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #8c8c8c;
+    text-align: center;
+    a {
+      color: #ff868e;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &__img {
+    cursor: pointer;
+    margin-top: 40px;
+    height: 320px;
+    background: #ffffff;
+    border: 2px dashed #fbe0dc;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__none {
+      position: relative;
+      p {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        color: #1d1d1d;
+        width: 382px;
+      }
+    }
+    input {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+    img {
+      max-width: 558px;
+      height: 280px;
+      border-radius: 20px;
+    }
+  }
+  &__controls {
+    margin: 20px 0;
+    &__none {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 30px;
+      color: #8c8c8c;
+      text-align: center;
+    }
+    &__full {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: #8c8c8c;
+      }
+      button {
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 2px;
+        color: #ffffff;
+        background: #ff868e;
+        border: 1px solid #ff868e;
+        border-radius: 10px;
+        padding: 12px 30px;
+        &:hover {
+          color: #ff868e;
+          border-color: #ff868e;
+          background: #ffffff;
+        }
+        &:disabled {
+          cursor: no-drop;
+        }
+      }
+    }
+  }
+  &__status {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #8c8c8c;
+    }
+  }
+}
