@@ -1,0 +1,28 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  &__item {
+    padding: 0 20px;
+    height: 40px;
+    background: #ff868e;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      background: #fbe0dc;
+      border-radius: 10px;
+      color: #ff868e;
+    }
+  }
+}

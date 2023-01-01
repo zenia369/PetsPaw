@@ -1,0 +1,42 @@
+.voting__content__logs__item {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f8f8f7;
+  border-radius: 10px;
+  & > svg {
+    margin-left: auto;
+  }
+  &.like svg path {
+    fill: #97eab9;
+  }
+  &.dislike svg path {
+    fill: #ffd280;
+  }
+  &.favourite svg path {
+    fill: #ff868e;
+  }
+
+  &-date {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1d1d1d;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 3px 10px;
+  }
+  &-info {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #8c8c8c;
+    & > span {
+      color: #1d1d1d;
+      font-weight: 500;
+    }
+  }
+}

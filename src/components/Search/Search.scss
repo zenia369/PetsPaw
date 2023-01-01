@@ -1,0 +1,36 @@
+.search-ui {
+  width: 395px;
+  height: 60px;
+  padding: 10px 10px 10px 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border 0.3s ease-out;
+  & > * {
+    border: none;
+    outline: none;
+    background: none;
+  }
+  & > input {
+    flex: 2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #1d1d1d;
+    &::placeholder {
+      color: #8c8c8c;
+    }
+  }
+  &:hover {
+    border: 2px solid #fbe0dc;
+  }
+  &:focus-visible,
+  &:active,
+  &:focus-within {
+    border: 2px solid #ff868e;
+  }
+}

@@ -1,0 +1,103 @@
+.header {
+  width: 445px;
+  margin: 0 auto;
+  justify-self: center;
+  & > a {
+    margin-bottom: 80px;
+    display: inline-block;
+  }
+  h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 58px;
+    color: #1d1d1d;
+    margin-bottom: 10px;
+    & + p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 29px;
+      color: #8c8c8c;
+      margin-bottom: 60px;
+    }
+  }
+  h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    color: #1d1d1d;
+    margin-bottom: 20px;
+  }
+  .nav {
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & > li {
+        & > a {
+          text-decoration: none;
+          &.active {
+            & p {
+              color: #ffffff;
+              background: #ff868e;
+            }
+          }
+          &:not(.active):hover {
+            & .img {
+              border: 4px solid #ffffff !important;
+            }
+            & p {
+              background: #fbe0dc;
+            }
+          }
+        }
+        .img {
+          width: 138px;
+          height: 198px;
+          max-width: 138px;
+          max-height: 198px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: border 0.3s ease-in-out;
+        }
+        p {
+          margin-top: 10px;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 2px;
+          color: #ff868e;
+          background: #ffffff;
+          border-radius: 10px;
+          width: 138px;
+          height: 36px;
+          text-transform: uppercase;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: background 0.3s ease-in-out;
+        }
+      }
+      & > li:nth-child(1) .img {
+        background: #b4b7ff;
+        border: 4px solid rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+      }
+      & > li:nth-child(2) .img {
+        background: #97eab9;
+        border: 4px solid rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+      }
+      & > li:nth-child(3) .img {
+        background: #ffd280;
+        border: 4px solid rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+      }
+    }
+  }
+}
