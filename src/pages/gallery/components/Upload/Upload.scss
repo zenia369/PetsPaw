@@ -4,7 +4,7 @@
     font-weight: 500;
     font-size: 36px;
     line-height: 52px;
-    color: #1d1d1d;
+    color: var(--black100);
     margin-bottom: 10px;
     text-align: center;
   }
@@ -12,10 +12,10 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
-    color: #8c8c8c;
+    color: var(--black50);
     text-align: center;
     a {
-      color: #ff868e;
+      color: var(--pink100);
       text-decoration: none;
       &:hover {
         text-decoration: underline;
@@ -26,8 +26,8 @@
     cursor: pointer;
     margin-top: 40px;
     height: 320px;
-    background: #ffffff;
-    border: 2px dashed #fbe0dc;
+    background: var(--white100);
+    border: 2px dashed var(--pink50);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -42,8 +42,14 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 30px;
-        color: #1d1d1d;
         width: 382px;
+        strong {
+          color: var(--black100);
+        }
+        color: var(--black50);
+      }
+      svg path {
+        fill: var(--white110);
       }
     }
     input {
@@ -64,7 +70,7 @@
       font-weight: 400;
       font-size: 20px;
       line-height: 30px;
-      color: #8c8c8c;
+      color: var(--black50);
       text-align: center;
     }
     &__full {
@@ -77,7 +83,7 @@
         font-weight: 400;
         font-size: 20px;
         line-height: 30px;
-        color: #8c8c8c;
+        color: var(--black50);
       }
       button {
         cursor: pointer;
@@ -85,15 +91,15 @@
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 2px;
-        color: #ffffff;
-        background: #ff868e;
-        border: 1px solid #ff868e;
+        color: var(--white110);
+        background: var(--pink100);
+        border: 1px solid var(--pink100);
         border-radius: 10px;
         padding: 12px 30px;
         &:hover {
-          color: #ff868e;
-          border-color: #ff868e;
-          background: #ffffff;
+          color: var(--pink100);
+          border-color: var(--pink100);
+          background: var(--white110);
         }
         &:disabled {
           cursor: no-drop;
@@ -102,7 +108,7 @@
     }
   }
   &__status {
-    background: #ffffff;
+    background: var(--white100);
     border-radius: 10px;
     padding: 18px 20px;
     display: flex;
@@ -112,7 +118,7 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 24px;
-      color: #8c8c8c;
+      color: var(--black50);
     }
   }
 }

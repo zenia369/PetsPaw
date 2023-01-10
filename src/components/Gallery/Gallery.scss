@@ -52,7 +52,7 @@
         width: 100%;
         height: 100%;
         padding: 10px;
-        background: rgba(255, 134, 142, 0.6);
+        background: var(--pink100-transperent-60);
         transition: opacity 0.3s ease-out;
         display: flex;
         align-items: center;
@@ -62,12 +62,12 @@
           width: 100%;
           padding: 5px 0;
           text-align: center;
-          background: #ffffff;
+          background: var(--white110);
           border-radius: 10px;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
-          color: #ff868e;
+          color: var(--pink100);
         }
         &-open {
           align-items: flex-end;

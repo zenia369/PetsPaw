@@ -1,3 +1,30 @@
+@mixin light-theme {
+  --white-black: #ffffff;
+  --pink50-black: #fbe0dc;
+  --white100: #f8f8f7;
+  --white110: #ffffff;
+  --toggled-white110: #ffffff;
+
+  --black100: #1d1d1d;
+
+  --pink50: #fbe0dc;
+  --static-pink50: #fbe0dc;
+}
+
+@mixin dark-theme {
+  color-scheme: dark;
+  --white-black: #343434;
+  --pink50-black: #343434;
+  --white100: #1d1d1d;
+  --white110: #343434;
+  --toggled-white110: rgba(50, 50, 50, 0.3);
+
+  --black100: #ffffff;
+
+  --pink50: rgba(255, 134, 142, 0.2);
+  --static-pink50: rgba(255, 255, 255, 0.05);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +32,44 @@
   font-family: "Jost", sans-serif;
 }
 
+:root {
+  --static-white110: #ffffff;
+  --white110-transperent-60: rgba(255, 255, 255, 0.6);
+
+  --black10: #e6e6e6;
+  --black50: #8c8c8c;
+  --black100-transperent-50: rgba(29, 29, 29, 0.5);
+
+  --pink100: #ff868e;
+  --pink100-transperent-60: rgba(255, 134, 142, 0.6);
+  --pink100-transperent-30: rgba(255, 134, 142, 0.3);
+
+  --blue100: #b4b7ff;
+
+  --green100: #97eab9;
+  --green100-transperent-30: rgba(151, 234, 185, 0.3);
+
+  --orange100: #ffd280;
+  --orange100-transperent-30: rgba(255, 210, 128, 0.3);
+
+  &.dark-theme {
+    @include dark-theme();
+  }
+  &.light-theme {
+    @include light-theme();
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.dark-theme,
+  :root.light-theme {
+    @include dark-theme();
+  }
+}
+
 body {
   padding: 30px;
   margin: 0 auto;
-  background: #f8f8f7;
+  background: var(--white100);
   overflow-y: scroll;
 }

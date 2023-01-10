@@ -3,21 +3,21 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 29px;
-    color: #8c8c8c;
+    color: var(--black50);
     margin-bottom: 20px;
     a {
-      color: #8c8c8c;
+      color: var(--black50);
       text-decoration: none;
     }
     span {
       text-transform: capitalize;
       font-weight: 500;
-      color: #1d1d1d;
+      color: var(--black100);
     }
   }
   &__empty {
     text-align: center;
-    color: #8c8c8c;
+    color: var(--black50);
     font-size: 20px;
   }
 }

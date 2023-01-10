@@ -1,7 +1,7 @@
 .breeds {
   &__btn__sort {
     all: unset;
-    background: #f8f8f7;
+    background: var(--white100);
     border-radius: 10px;
     width: 40px;
     height: 40px;
@@ -11,9 +11,9 @@
     align-items: center;
     cursor: pointer;
     &:hover {
-      border: 2px solid #fbe0dc;
+      border: 2px solid var(--pink50);
       svg path {
-        fill: #ff868e;
+        fill: var(--pink100);
       }
     }
   }

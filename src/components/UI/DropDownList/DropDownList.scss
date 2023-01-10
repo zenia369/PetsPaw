@@ -17,11 +17,11 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #8c8c8c;
+    color: var(--black50);
   }
-  &_btn {
+  &__btn {
     border: none;
-    background: #f8f8f7;
+    background: var(--white100);
     border-radius: 10px;
     border: 2px solid transparent;
     padding: 8px 10px;
@@ -32,14 +32,14 @@
     text-transform: capitalize;
     cursor: pointer;
     &:hover {
-      border: 2px solid #fbe0dc;
+      border: 2px solid var(--pink50);
     }
   }
   &_label {
     font-weight: 500;
     font-size: 10px;
     line-height: 18px;
-    color: #8c8c8c;
+    color: var(--black50);
     margin-left: 8px;
   }
   &__list {
@@ -49,7 +49,7 @@
     max-height: 30vh;
     overflow-y: auto;
     list-style: none;
-    background: #ffffff;
+    background: var(--white110);
     border-radius: 30px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -68,7 +68,7 @@
       visibility: visible;
       opacity: 1;
       transform: translateY(0px);
-      box-shadow: 7px 7px 21px #e6e6e6, -7px 0px 21px #e6e6e6;
+      box-shadow: 7px 7px 21px var(--black10), -7px 0px 21px var(--black10);
     }
     &_item {
       button {
@@ -81,15 +81,15 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        color: #8c8c8c;
+        color: var(--black50);
         border-bottom: 1px solid transparent;
         transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
       }
       &:not(.active):hover {
         button {
           cursor: pointer;
-          border-bottom: 1px solid #fbe0dc;
-          color: #1d1d1d;
+          border-bottom: 1px solid var(--pink50);
+          color: var(--black100);
         }
       }
       &.active {

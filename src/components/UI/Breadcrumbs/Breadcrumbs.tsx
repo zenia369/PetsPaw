@@ -23,7 +23,7 @@ function Breadcrumbs({ children, pageName, crumbs }: IBreadcrumbs) {
   return (
     <div className="breadcrumbs">
       <Button type="small_btn" click={goBack} svg={svgArrowToLeft} />
-      <h3 className={`breadcrumbs__item ${crumbs?.length && "active"}`}>
+      <h3 className={`breadcrumbs__item ${crumbs?.length ? "active" : ""}`}>
         {pageName}
       </h3>
       {crumbs?.length

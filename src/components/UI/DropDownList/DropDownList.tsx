@@ -30,7 +30,7 @@ function DropDownList({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="drop__down__item_btn"
+        className="drop__down__item__btn"
         style={dropWidthStyles}
       >
         <span>{`${dropName} ${activeCategory.name}`}</span>

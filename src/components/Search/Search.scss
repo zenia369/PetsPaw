@@ -2,7 +2,7 @@
   width: 395px;
   height: 60px;
   padding: 10px 10px 10px 20px;
-  background: #ffffff;
+  background: var(--white110);
   border-radius: 20px;
   border: 2px solid transparent;
   display: flex;
@@ -20,17 +20,17 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
-    color: #1d1d1d;
+    color: var(--black100);
     &::placeholder {
-      color: #8c8c8c;
+      color: var(--black50);
     }
   }
   &:hover {
-    border: 2px solid #fbe0dc;
+    border: 2px solid var(--pink50);
   }
   &:focus-visible,
   &:active,
   &:focus-within {
-    border: 2px solid #ff868e;
+    border: 2px solid var(--pink100);
   }
 }

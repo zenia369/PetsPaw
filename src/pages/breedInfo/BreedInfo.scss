@@ -16,7 +16,7 @@
       align-items: center;
       gap: 5px;
       padding: 10px;
-      background: #ffffff;
+      background: var(--white110);
       border-radius: 20px;
       span {
         width: 10px;
@@ -31,18 +31,18 @@
   }
   &__content {
     margin-top: 50px;
-    border: 2px solid #fbe0dc;
+    border: 2px solid var(--pink50);
     border-radius: 20px;
     padding: 25px 40px 40px 40px;
     position: relative;
     &__breed {
       text-align: center;
-      background: #ffffff;
+      background: var(--white110);
       padding: 0 40px;
       font-weight: 500;
       font-size: 24px;
       line-height: 52px;
-      color: #1d1d1d;
+      color: var(--black100);
       position: absolute;
       top: 0;
       left: 50%;
@@ -53,7 +53,7 @@
       font-weight: 500;
       font-size: 20px;
       line-height: 29px;
-      color: #8c8c8c;
+      color: var(--black50);
       text-align: center;
       margin-bottom: 20px;
     }
@@ -69,10 +69,10 @@
           font-weight: 600;
           font-size: 16px;
           line-height: 23px;
-          color: #1d1d1d;
+          color: var(--black100);
           span {
             font-weight: 500;
-            color: #8c8c8c;
+            color: var(--black50);
           }
         }
       }
@@ -84,10 +84,10 @@
           font-weight: 600;
           font-size: 16px;
           line-height: 23px;
-          color: #1d1d1d;
+          color: var(--black100);
           span {
             font-weight: 500;
-            color: #8c8c8c;
+            color: var(--black50);
           }
         }
       }
@@ -95,7 +95,7 @@
   }
   &__empty {
     text-align: center;
-    color: #8c8c8c;
+    color: var(--black50);
     font-size: 16px;
     font-weight: 500;
   }

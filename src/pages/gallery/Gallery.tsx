@@ -84,7 +84,7 @@ function reducers(
   }
 }
 
-const DEFAULTDropWidthStyles = { background: "white" };
+const DEFAULTDropWidthStyles = { background: "var(--white-black)" };
 
 function GalleryPage() {
   const [{ limit, order, type }, dispatch] = useReducer(reducers, initialState);

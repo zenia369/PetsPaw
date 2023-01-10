@@ -8,27 +8,32 @@
   cursor: pointer;
 }
 
-a {
-  .middle_btn {
-    border: none;
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    background: #ffffff;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover {
-      background: #fbe0dc;
-    }
+@mixin styles-middle_btn {
+  border: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  background: var(--white110);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background: var(--pink50);
   }
+}
+
+.middle_btn {
+  @include styles-middle_btn();
+}
+
+a {
   &.active {
     .middle_btn {
-      background: #ff868e;
+      background: var(--pink100);
     }
     svg path {
-      fill: white;
+      fill: var(--static-white110);
     }
   }
 }
@@ -36,7 +41,7 @@ a {
 .small_btn {
   all: unset;
   cursor: pointer;
-  background: #fbe0dc;
+  background: var(--pink50);
   border-radius: 10px;
   width: 40px;
   height: 40px;
@@ -46,9 +51,9 @@ a {
   transition: background 0.3s ease-out;
 
   &:hover {
-    background: #ff868e;
+    background: var(--pink100) !important;
     svg path {
-      fill: white;
+      fill: var(--static-white110);
     }
   }
 }

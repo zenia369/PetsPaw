@@ -3,19 +3,19 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: #f8f8f7;
+  background: var(--white100);
   border-radius: 10px;
   & > svg {
     margin-left: auto;
   }
   &.like svg path {
-    fill: #97eab9;
+    fill: var(--green100);
   }
   &.dislike svg path {
-    fill: #ffd280;
+    fill: var(--orange100);
   }
   &.favourite svg path {
-    fill: #ff868e;
+    fill: var(--pink100);
   }
 
   &-date {
@@ -23,8 +23,8 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #1d1d1d;
-    background: #ffffff;
+    color: var(--black100);
+    background: var(--white110);
     border-radius: 5px;
     padding: 3px 10px;
   }
@@ -33,9 +33,9 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #8c8c8c;
+    color: var(--black50);
     & > span {
-      color: #1d1d1d;
+      color: var(--black100);
       font-weight: 500;
     }
   }

@@ -68,6 +68,9 @@ function Gallery({ list, isOpen, isFavorite, removeFavourite }: IGallery) {
                     type="small_btn"
                     click={() => handleRemoveFavourite(el.id)}
                     svg={sgvFavourites}
+                    styles={{
+                      background: "var(--pink50-black)",
+                    }}
                   />
                 </div>
               )}

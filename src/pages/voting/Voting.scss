@@ -5,7 +5,7 @@
     height: 360px;
     width: 640px;
     border-radius: 20px;
-    background: #ff868e4f;
+    background: var(--pink100-static-transperent-60);
     & > img {
       width: 100%;
       height: 100%;
@@ -20,37 +20,37 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      background: #ffffff;
-      border: 4px solid #ffffff;
+      background: var(--white-black);
+      border: 4px solid var(--white-black);
       border-radius: 20px;
       overflow: hidden;
       button svg path {
-        fill: white;
+        fill: var(--static-white110);
       }
       & button:nth-child(1) {
-        background: #97eab9;
+        background: var(--green100);
         &:not(:active):hover {
-          background: rgba(151, 234, 185, 0.3);
+          background: var(--green100-transperent-30);
           svg > path {
-            fill: #97eab9;
+            fill: var(--green100);
           }
         }
       }
       & button:nth-child(2) {
-        background: #ff868e;
+        background: var(--pink100);
         &:not(:active):hover {
-          background: rgba(255, 134, 142, 0.3);
+          background: var(--pink100-transperent-30);
           svg > path {
-            fill: #ff868e;
+            fill: var(--pink100);
           }
         }
       }
       & button:nth-child(3) {
-        background: #ffd280;
+        background: var(--orange100);
         &:not(:active):hover {
-          background: rgba(255, 210, 128, 0.3);
+          background: var(--orange100-transperent-30);
           svg > path {
-            fill: #ffd280;
+            fill: var(--orange100);
           }
         }
       }
@@ -70,7 +70,7 @@
         font-weight: 400;
         font-size: 20px;
         line-height: 29px;
-        color: #8c8c8c;
+        color: var(--black50);
       }
     }
   }

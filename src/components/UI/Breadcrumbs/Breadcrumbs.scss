@@ -6,7 +6,7 @@
   &__item {
     padding: 0 20px;
     height: 40px;
-    background: #ff868e;
+    background: var(--pink100);
     border-radius: 10px;
     font-style: normal;
     font-weight: 500;
@@ -14,15 +14,15 @@
     line-height: 30px;
     text-align: center;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: var(--static-white110);
     text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
     &.active {
-      background: #fbe0dc;
+      background: var(--pink50);
       border-radius: 10px;
-      color: #ff868e;
+      color: var(--pink100);
     }
   }
 }
