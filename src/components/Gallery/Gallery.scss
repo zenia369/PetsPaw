@@ -5,8 +5,8 @@
   &__section {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 140px);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(140px, 1fr));
     gap: 20px;
     grid-template-areas:
       "zero one two"

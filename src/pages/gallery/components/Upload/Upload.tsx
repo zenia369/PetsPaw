@@ -10,6 +10,7 @@ import { uploadPhoto } from "../../../../services/app.service";
 import { svgImg } from "../../../../assets/svgs";
 import uploadOk from "../../../../assets/images/upload_ok.png";
 import uploadErr from "../../../../assets/images/upload_err.png";
+import useMatchMedia from "../../../../hooks/useMatchMedia";
 
 function Upload() {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -19,6 +20,7 @@ function Upload() {
       setFile(undefined);
     },
   });
+  const { isDesktop } = useMatchMedia();
 
   const previewUrl = useMemo(
     () => file && window.URL.createObjectURL(file),
@@ -48,7 +50,7 @@ function Upload() {
         deletion.
       </p>
       <div
-        className="upload__img"
+        className={`upload__img ${isDesktop ? "" : "upload__img-adaptive"}`}
         onClick={handleInputFileClick}
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDragDropFile}
@@ -66,7 +68,11 @@ function Upload() {
             alt="uploaded data"
           />
         ) : (
-          <div className="upload__img__none">
+          <div
+            className={`upload__img__none ${
+              isDesktop ? "" : "upload__img__none-adaptive"
+            }`}
+          >
             {svgImg}
             <p>
               <strong>Drag here</strong> your file or{" "}

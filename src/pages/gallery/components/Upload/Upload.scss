@@ -1,5 +1,6 @@
 .upload {
   margin-top: 40px;
+
   &__title {
     font-weight: 500;
     font-size: 36px;
@@ -51,6 +52,11 @@
       svg path {
         fill: var(--white110);
       }
+      &-adaptive {
+        svg path {
+          fill: var(--white100);
+        }
+      }
     }
     input {
       width: 0;
@@ -62,6 +68,9 @@
       max-width: 558px;
       height: 280px;
       border-radius: 20px;
+    }
+    &-adaptive {
+      background: var(--white110);
     }
   }
   &__controls {

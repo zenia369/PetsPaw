@@ -1,0 +1,16 @@
+.menu {
+  &__modal {
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      & > button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

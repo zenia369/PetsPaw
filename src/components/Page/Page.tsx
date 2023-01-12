@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import PageNav from "../PageNav/PageNav";
+import Nav from "./components/Nav/Nav";
 
 function Page() {
   return (
     <>
-      <PageNav />
+      <Nav />
       <Outlet />
     </>
   );

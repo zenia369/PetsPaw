@@ -1,12 +1,16 @@
 import { useId } from "react";
-import "./PageNav.scss";
+import "./Nav.scss";
 
 import { NavLink } from "react-router-dom";
 
-import { sgvFavourites, svgDislikes, svgLikes } from "../../assets/svgs";
-import { LINK } from "../../routes/links";
-import Search from "../Search/Search";
-import Button from "../UI/Button/Button";
+import { LINK } from "../../../../routes/links";
+
+import useMatchMedia from "../../../../hooks/useMatchMedia";
+
+import Menu from "../Menu/Menu";
+import Search from "../../../Search/Search";
+import { sgvFavourites, svgDislikes, svgLikes } from "../../../../assets/svgs";
+import Button from "../../../UI/Button/Button";
 
 const pages = [
   {
@@ -23,10 +27,13 @@ const pages = [
   },
 ];
 
-function PageNav() {
+function Nav() {
   const linkId = useId();
+  const { isDesktop } = useMatchMedia();
+
   return (
-    <section className="content_nav">
+    <section className="page_nav">
+      {isDesktop ? null : <Menu />}
       <Search />
       {pages.map((el) => (
         <NavLink key={linkId + el.path} to={el.path}>
@@ -37,4 +44,4 @@ function PageNav() {
   );
 }
 
-export default PageNav;
+export default Nav;

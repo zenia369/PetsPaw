@@ -5,7 +5,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import router from "./routes/root";
+import routerAdaptive from "./routes/root.adaptive";
 import { ThemeProvider } from "./context/theme.context";
+
+import useMatchMedia from "./hooks/useMatchMedia";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,10 +19,11 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  const { isDesktop } = useMatchMedia();
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <RouterProvider router={isDesktop ? router : routerAdaptive} />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>

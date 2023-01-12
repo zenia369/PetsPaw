@@ -1,6 +1,8 @@
 .breed-info {
   &__img {
     position: relative;
+    display: flex;
+    justify-content: center;
     img {
       width: 640px;
       height: 360px;
