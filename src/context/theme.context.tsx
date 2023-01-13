@@ -1,4 +1,10 @@
-import { createContext, useState, useContext, useMemo, useEffect } from "react";
+import {
+  createContext,
+  useState,
+  useContext,
+  useMemo,
+  useLayoutEffect,
+} from "react";
 
 export enum Themes {
   light = "light-theme",
@@ -16,7 +22,7 @@ const ThemeContext = createContext<{
 export function ThemeProvider({ children }: { children: JSX.Element }) {
   const [theme, setTheme] = useState(Themes.light);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.classList.toggle(Themes.light);
     document.documentElement.classList.toggle(Themes.dark);
   }, [theme]);
