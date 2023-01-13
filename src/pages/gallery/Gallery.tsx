@@ -13,6 +13,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import Modal, { useModal } from "../../components/UI/Modal/Modal";
 import Gallery from "../../components/Gallery/Gallery";
 import Upload from "./components/Upload/Upload";
+import useMatchMedia from "../../hooks/useMatchMedia";
 
 const initialState = {
   limit: {
@@ -101,9 +102,10 @@ function GalleryPage() {
     queryTags: ["gallery-page-list"],
   });
   const [modal, setModal] = useModal();
+  const { isMobile } = useMatchMedia();
 
   return (
-    <section className="pages gallery">
+    <section className={`pages gallery ${isMobile ? "gallery-mobile" : ""}`}>
       {modal ? (
         <Modal closeHandler={setModal}>
           <Upload />

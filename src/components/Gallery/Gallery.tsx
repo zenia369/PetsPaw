@@ -9,6 +9,7 @@ import IBreed from "../../models/IBreed";
 import IReaction from "../../models/IReaction";
 import { sgvFavourites } from "../../assets/svgs";
 import Button from "../UI/Button/Button";
+import useMatchMedia from "../../hooks/useMatchMedia";
 
 interface IGallery {
   list: IBreed[] | IReaction[];
@@ -20,6 +21,7 @@ interface IGallery {
 
 function Gallery({ list, isOpen, isFavorite, removeFavourite }: IGallery) {
   const gSectionId = useId();
+  const { isMobile } = useMatchMedia();
 
   const gList = galleryList(list);
 
@@ -33,7 +35,7 @@ function Gallery({ list, isOpen, isFavorite, removeFavourite }: IGallery) {
   );
 
   return (
-    <div className="gallery-ui">
+    <div className={`gallery-ui ${isMobile ? "gallery-ui-mobile" : ""}`}>
       {gList.map((gItem, idx) => (
         <ul
           // eslint-disable-next-line react/no-array-index-key

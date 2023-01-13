@@ -1,5 +1,6 @@
 .search-ui {
-  width: 395px;
+  width: 100%;
+  max-width: 395px;
   height: 60px;
   padding: 10px 10px 10px 20px;
   background: var(--white110);
@@ -15,6 +16,7 @@
     background: none;
   }
   & > input {
+    width: 100%;
     flex: 2;
     font-style: normal;
     font-weight: 400;
@@ -32,5 +34,8 @@
   &:active,
   &:focus-within {
     border: 2px solid var(--pink100);
+  }
+  &-mobile {
+    order: 10;
   }
 }

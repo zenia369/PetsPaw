@@ -3,6 +3,8 @@ import "./Menu.scss";
 
 import { useNavigate } from "react-router-dom";
 
+import useMatchMedia from "../../../../hooks/useMatchMedia";
+
 import {
   HEADER_NAV_LIST_DATA,
   HeaderNavListItem,
@@ -11,8 +13,31 @@ import Button from "../../../UI/Button/Button";
 import Modal, { useModal } from "../../../UI/Modal/Modal";
 import { svgMenu } from "../../../../assets/svgs";
 
-function Menu() {
+function MenuModal({ handleClick }: { handleClick: (arg: string) => void }) {
   const modalItemId = useId();
+  const { isMobile } = useMatchMedia();
+
+  return (
+    <div
+      className={`menu__modal__list ${
+        isMobile ? "header__nav__list-mobile" : ""
+      }`}
+    >
+      {HEADER_NAV_LIST_DATA.map((item) => (
+        <button
+          key={modalItemId + item.name}
+          type="button"
+          className="header__nav__list__item"
+          onClick={() => handleClick(item.link)}
+        >
+          <HeaderNavListItem img={item.img} name={item.name} />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Menu() {
   const [open, setOpen] = useModal();
   const navigate = useNavigate();
 
@@ -26,18 +51,7 @@ function Menu() {
       <Button type="middle_btn" svg={svgMenu} click={setOpen} />
       {open ? (
         <Modal closeHandler={setOpen}>
-          <div className="menu__modal__list">
-            {HEADER_NAV_LIST_DATA.map((item) => (
-              <button
-                key={modalItemId + item.name}
-                type="button"
-                className="header__nav__list__item"
-                onClick={() => handleClick(item.link)}
-              >
-                <HeaderNavListItem img={item.img} name={item.name} />
-              </button>
-            ))}
-          </div>
+          <MenuModal handleClick={handleClick} />
         </Modal>
       ) : null}
     </div>

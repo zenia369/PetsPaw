@@ -1,5 +1,6 @@
 .header {
-  width: 445px;
+  max-width: 445px;
+  width: 100%;
   margin: 0 auto;
   justify-self: center;
   &__head {
@@ -7,6 +8,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    column-gap: 10px;
+    flex-wrap: wrap;
     &__logo {
       display: flex;
       align-items: center;
@@ -136,6 +139,7 @@
           align-items: center;
           transition: background 0.3s ease-in-out;
         }
+
         &:nth-child(1) &__img {
           background: var(--blue100);
           border: 4px solid var(--white110-transperent-60);
@@ -151,6 +155,16 @@
           border: 4px solid var(--white110-transperent-60);
           border-radius: 20px;
         }
+      }
+      &-mobile {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      &-mobile &__item__img {
+        display: none;
+      }
+      &-mobile &__item__name {
+        width: 100%;
       }
     }
   }

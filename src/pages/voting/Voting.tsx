@@ -17,11 +17,13 @@ import Loader from "../../components/UI/Loader/Loader";
 import Button from "../../components/UI/Button/Button";
 import Breadcrumbs from "../../components/UI/Breadcrumbs/Breadcrumbs";
 import VotingLogItem from "./components/VotingLogItem/VotingLogItem";
+import useMatchMedia from "../../hooks/useMatchMedia";
 
 function Voting() {
   const logItemId = useId();
   const { data, isFetching, refetch } = useQuery("voting", votingService);
   const { logs, addLog } = useLogs();
+  const { isMobile } = useMatchMedia();
 
   const hendleReaction = useCallback(
     (type: IReactionType, action: IReactionAction) => {
@@ -36,7 +38,11 @@ function Voting() {
   return (
     <section className="pages voting">
       <Breadcrumbs pageName={LINK.voting} />
-      <div className="voting__content">
+      <div
+        className={`voting__content ${
+          isMobile ? "voting__content-mobile" : ""
+        }`}
+      >
         <div className="voting__content__head">
           {isFetching ? (
             <Loader />

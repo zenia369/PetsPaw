@@ -29,10 +29,10 @@ const pages = [
 
 function Nav() {
   const linkId = useId();
-  const { isDesktop } = useMatchMedia();
+  const { isDesktop, isMobile } = useMatchMedia();
 
   return (
-    <section className="page_nav">
+    <section className={`page_nav ${isMobile ? "page_nav-mobile" : ""}`}>
       {isDesktop ? null : <Menu />}
       <Search />
       {pages.map((el) => (

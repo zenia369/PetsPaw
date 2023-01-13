@@ -5,6 +5,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     height: 40px;
     padding: 0 30px;
@@ -54,5 +55,12 @@
         }
       }
     }
+  }
+  &-mobile &__controls {
+    display: flex;
+    flex-direction: column;
+  }
+  &-mobile &__upload-btn {
+    width: 100%;
   }
 }

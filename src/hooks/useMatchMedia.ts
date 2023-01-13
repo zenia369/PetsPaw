@@ -7,7 +7,7 @@ interface IScreens {
 }
 
 const screens = [
-  "(min-width: 375px) and max-width: 767px)",
+  "(max-width: 767px)",
   "(min-width: 768px) and (max-width: 1199px)",
   "(min-width: 1200px)",
 ];
@@ -23,7 +23,7 @@ export default () => {
 
     return () =>
       mediaQueryLists.forEach((s) => s.removeEventListener("change", handler));
-  });
+  }, []);
 
   return ["isMobile", "isTablet", "isDesktop"].reduce(
     (acc, s, idx) => ({ ...acc, [s]: state[idx] }),

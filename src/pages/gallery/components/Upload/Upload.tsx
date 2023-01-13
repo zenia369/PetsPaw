@@ -42,7 +42,7 @@ function Upload() {
   };
 
   return (
-    <div className="upload">
+    <div className={`upload ${isDesktop ? "" : "upload-adaptive"}`}>
       <h4 className="upload__title">Upload a .jpg or .png Cat Image</h4>
       <p className="upload__subTitle">
         Any uploads must comply with the{" "}
@@ -50,7 +50,7 @@ function Upload() {
         deletion.
       </p>
       <div
-        className={`upload__img ${isDesktop ? "" : "upload__img-adaptive"}`}
+        className="upload__img"
         onClick={handleInputFileClick}
         onDragOver={(e) => e.preventDefault()}
         onDrop={handleDragDropFile}
@@ -68,11 +68,7 @@ function Upload() {
             alt="uploaded data"
           />
         ) : (
-          <div
-            className={`upload__img__none ${
-              isDesktop ? "" : "upload__img__none-adaptive"
-            }`}
-          >
+          <div className="upload__img__none">
             {svgImg}
             <p>
               <strong>Drag here</strong> your file or{" "}

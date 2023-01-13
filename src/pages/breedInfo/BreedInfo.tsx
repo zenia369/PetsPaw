@@ -11,6 +11,7 @@ import ICategory from "../../models/ICategory";
 
 import Breadcrumbs from "../../components/UI/Breadcrumbs/Breadcrumbs";
 import Loader from "../../components/UI/Loader/Loader";
+import useMatchMedia from "../../hooks/useMatchMedia";
 
 interface ILocacation {
   state: {
@@ -26,6 +27,7 @@ function BreedInfo() {
   const { data, isFetching } = useQuery(["breed-info", item.id], () =>
     getBreedById(item.id)
   );
+  const { isMobile } = useMatchMedia();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -53,7 +55,11 @@ function BreedInfo() {
       {isFetching && !data ? (
         <Loader addClass={["mini-cat"]} />
       ) : (
-        <div className="breed-info__content">
+        <div
+          className={`breed-info__content ${
+            isMobile ? "breed-info__content-adaptive" : ""
+          }`}
+        >
           {data?.breeds.length ? (
             <>
               <h3 className="breed-info__content__breed">

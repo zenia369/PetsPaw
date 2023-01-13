@@ -1,6 +1,5 @@
 .upload {
   margin-top: 40px;
-
   &__title {
     font-weight: 500;
     font-size: 36px;
@@ -32,6 +31,7 @@
     border-radius: 20px;
     display: flex;
     align-items: center;
+    padding: 10px;
     justify-content: center;
     &__none {
       position: relative;
@@ -43,7 +43,8 @@
         font-weight: 500;
         font-size: 20px;
         line-height: 30px;
-        width: 382px;
+        width: 100%;
+        max-width: 382px;
         strong {
           color: var(--black100);
         }
@@ -51,11 +52,6 @@
       }
       svg path {
         fill: var(--white110);
-      }
-      &-adaptive {
-        svg path {
-          fill: var(--white100);
-        }
       }
     }
     input {
@@ -66,11 +62,9 @@
     }
     img {
       max-width: 558px;
-      height: 280px;
+      width: 100%;
+      max-height: 280px;
       border-radius: 20px;
-    }
-    &-adaptive {
-      background: var(--white110);
     }
   }
   &__controls {
@@ -129,5 +123,19 @@
       line-height: 24px;
       color: var(--black50);
     }
+  }
+
+  &-adaptive &__img {
+    background: var(--white110);
+    height: fit-content;
+    min-height: 140px;
+    &__none {
+      svg path {
+        fill: var(--white100);
+      }
+    }
+  }
+  &-adaptive &__status {
+    background: var(--white110);
   }
 }

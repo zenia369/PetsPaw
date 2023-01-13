@@ -1,17 +1,19 @@
 .voting__content {
   &__head {
     position: relative;
-    margin: 0 auto;
     margin-bottom: 50px;
-    height: 360px;
-    width: 640px;
     border-radius: 20px;
     background: var(--pink100-static-transperent-60);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     & > img {
-      width: 100%;
-      height: 100%;
+      max-width: 640px;
+      max-height: 360px;
       border-radius: 20px;
       object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
     &__btns {
       position: absolute;
@@ -72,6 +74,23 @@
         font-size: 20px;
         line-height: 29px;
         color: var(--black50);
+      }
+    }
+  }
+  &-mobile &__head {
+    &__btns {
+      button {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+  &-mobile &__logs {
+    &__item {
+      flex-direction: column;
+      align-items: stretch;
+      svg {
+        margin: 0 auto;
       }
     }
   }

@@ -12,6 +12,7 @@ import eye_close from "../../assets/images/eye-close.png";
 import nav1 from "../../assets/images/vote-table.svg";
 import nav2 from "../../assets/images/pet-breeds.svg";
 import nav3 from "../../assets/images/images-search.svg";
+import useMatchMedia from "../../hooks/useMatchMedia";
 
 export const HEADER_NAV_LIST_DATA = [
   {
@@ -50,8 +51,14 @@ export function HeaderNavListItem({
 
 function HeaderNavList() {
   const itemId = useId();
+  const { isMobile } = useMatchMedia();
+
   return (
-    <ul className="header__nav__list">
+    <ul
+      className={`header__nav__list ${
+        isMobile ? "header__nav__list-mobile" : ""
+      }`}
+    >
       {HEADER_NAV_LIST_DATA.map((item) => (
         <li key={itemId + item.name} className="header__nav__list__item">
           <NavLink to={`/${item.link}`}>
