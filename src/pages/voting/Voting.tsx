@@ -47,12 +47,7 @@ function Voting() {
           {isFetching ? (
             <Loader />
           ) : (
-            <img
-              width={640}
-              height={360}
-              src={data?.url}
-              alt="Voting item cat"
-            />
+            <img src={data?.url} alt="Voting item cat" />
           )}
           <div className="voting__content__head__btns">
             <Button
