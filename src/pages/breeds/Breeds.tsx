@@ -83,37 +83,39 @@ function Breeds() {
     dispatch({ type: "order", payload: type });
   }, []);
 
+  const isLoading = isFetchedBreeds && breeds && !isFetchingList && breedsList;
+
   return (
     <section className="pages breeds">
-      {isFetchedBreeds && breeds && !isFetchingList && breedsList ? (
-        <>
-          <Breadcrumbs pageName={LINK.breeds}>
-            <>
-              <DropDownList listItmes={breeds} click={setActiveBreeds} />
-              <DropDownList
-                listItmes={limit.list}
-                dropName="Limit: "
-                dropWidthClass="small"
-                click={setLimit}
-              />
-              <button
-                type="button"
-                onClick={() => sortList("ASC")}
-                className="breeds__btn__sort"
-              >
-                {svgSortDown}
-              </button>
-              <button
-                type="button"
-                onClick={() => sortList("DESC")}
-                className="breeds__btn__sort"
-              >
-                {svgSordUp}
-              </button>
-            </>
-          </Breadcrumbs>
-          <Gallery list={breedsList} isOpen isFavorite={false} />
-        </>
+      <Breadcrumbs pageName={LINK.breeds}>
+        {isLoading && (
+          <div className="breeds__controls">
+            <DropDownList listItmes={breeds} click={setActiveBreeds} />
+            <DropDownList
+              listItmes={limit.list}
+              dropName="Limit: "
+              dropWidthClass="small"
+              click={setLimit}
+            />
+            <button
+              type="button"
+              onClick={() => sortList("ASC")}
+              className="breeds__btn__sort"
+            >
+              {svgSortDown}
+            </button>
+            <button
+              type="button"
+              onClick={() => sortList("DESC")}
+              className="breeds__btn__sort"
+            >
+              {svgSordUp}
+            </button>
+          </div>
+        )}
+      </Breadcrumbs>
+      {isLoading ? (
+        <Gallery list={breedsList} isOpen isFavorite={false} />
       ) : (
         <Loader />
       )}
