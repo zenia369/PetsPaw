@@ -29,17 +29,13 @@ const router = createBrowserRouter([
         children: [
           breedsRoute,
           userRoute,
-          // {
-          //   path: LINK.voting,
-          //   element: (
-          //     <Suspense fallback={<PageLoader />}>
-          //       <Voting />
-          //     </Suspense>
-          //   ),
-          // },
           {
             path: LINK.voting,
-            element: <PageLoader />,
+            element: (
+              <Suspense fallback={<PageLoader />}>
+                <Voting />
+              </Suspense>
+            ),
           },
           {
             path: LINK.gallery,
