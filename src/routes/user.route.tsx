@@ -1,28 +1,51 @@
+import { lazy, Suspense } from "react";
+
 import { RouteObject } from "react-router-dom";
 
 import { LINK } from "./links";
+import PageLoader from "../components/UI/PageLoader/PageLoader";
 
-import { Dislike, Favourite, Likes } from "../pages/user/reaction";
-import Search from "../pages/user/search/Search";
+const Search = lazy(() => import("../pages/user/search/Search"));
+const Dislike = lazy(() => import("../pages/user/reaction/components/Dislike"));
+const Favourite = lazy(
+  () => import("../pages/user/reaction/components/Favourite")
+);
+const Likes = lazy(() => import("../pages/user/reaction/components/Likes"));
 
 const route: RouteObject = {
   path: LINK.user,
   children: [
     {
       path: LINK.likes,
-      element: <Likes />,
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <Likes />
+        </Suspense>
+      ),
     },
     {
       path: LINK.favourites,
-      element: <Favourite />,
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <Favourite />
+        </Suspense>
+      ),
     },
     {
       path: LINK.dislikes,
-      element: <Dislike />,
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <Dislike />
+        </Suspense>
+      ),
     },
     {
       path: LINK.search,
-      element: <Search />,
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <Search />
+        </Suspense>
+      ),
     },
   ],
 };

@@ -1,19 +1,31 @@
+import { lazy, Suspense } from "react";
+
 import { RouteObject } from "react-router-dom";
 
 import { LINK } from "./links";
-import BreedInfo from "../pages/breedInfo/BreedInfo";
-import Breeds from "../pages/breeds/Breeds";
+import PageLoader from "../components/UI/PageLoader/PageLoader";
+
+const Breeds = lazy(() => import("../pages/breeds/Breeds"));
+const BreedInfo = lazy(() => import("../pages/breedInfo/BreedInfo"));
 
 const route: RouteObject = {
   path: LINK.breeds,
   children: [
     {
       index: true,
-      element: <Breeds />,
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <Breeds />
+        </Suspense>
+      ),
     },
     {
       path: ":id",
-      element: <BreedInfo />,
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <BreedInfo />
+        </Suspense>
+      ),
     },
   ],
 };
