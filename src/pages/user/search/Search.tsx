@@ -39,11 +39,7 @@ function Search() {
         )
       </h4>
       {!isFetching && data ? (
-        data.length ? (
-          <Gallery list={data} isOpen isFavorite={false} />
-        ) : (
-          <p className="search__empty">Information not found</p>
-        )
+        <Gallery list={data} isOpen isFavorite={false} />
       ) : (
         <Loader />
       )}
