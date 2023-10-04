@@ -21,6 +21,11 @@ function DropDownList({
     name: string;
   };
 
+  const handleSelectItem = (name: string | number) => {
+    click(name);
+    setOpen(!open);
+  };
+
   return (
     <div
       ref={wrapperRef}
@@ -42,7 +47,7 @@ function DropDownList({
             key={`${listItemId}dropDown${el.name}`}
             className={`drop__down__item__list_item ${el.active && "active"}`}
           >
-            <button type="button" onClick={() => click(el.name)}>
+            <button type="button" onClick={() => handleSelectItem(el.name)}>
               {el.name}
             </button>
           </li>
