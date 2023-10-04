@@ -1,46 +1,43 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 import IReaction, { IReactionAction, IReactionType } from "../models/IReaction";
 
 import { currentTime } from "../helpers/getDate";
 import { getItemLS, setItemLS } from "../helpers/localStorage";
 
-const LOGS_KEY = "logs";
+const LOGS_KEY = "PETS_PAW_USER_REACTION_LOGS";
+
+const getLogsFromLS = () => {
+  try {
+    return getItemLS<IReaction[]>(LOGS_KEY);
+  } catch (error) {
+    return [];
+  }
+};
 
 export default () => {
-  const [logs, setLogs] = useState<IReaction[]>(() => {
-    try {
-      return getItemLS(LOGS_KEY);
-    } catch (error) {
-      return [];
+  const [logs, setLogs] = useState<IReaction[]>(getLogsFromLS);
+
+  const addLog = (type: IReactionType, action: IReactionAction, id: string) => {
+    const itemReaction: IReaction = {
+      type,
+      date: currentTime(),
+      action,
+      id,
+    };
+
+    if (!logs.length) {
+      setLogs([itemReaction]);
+    } else {
+      setLogs((prev) => [itemReaction, ...prev]);
     }
-  });
+  };
 
-  const addLog = useCallback(
-    (type: IReactionType, action: IReactionAction, id: string) => {
-      const itemReaction: IReaction = {
-        type,
-        date: currentTime(),
-        action,
-        id,
-      };
-      if (!logs.length) {
-        setLogs([itemReaction]);
-      } else {
-        setLogs([itemReaction, ...logs]);
-      }
-    },
-    [logs, setLogs]
-  );
+  const removeLog = useCallback((id: string) => {
+    setLogs((prev) => prev.filter((r) => r.id !== id));
+  }, []);
 
-  const removeLog = useCallback(
-    (id: string) => {
-      setLogs((prev) => prev.filter((r) => r.id !== id));
-    },
-    [setLogs]
-  );
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     setItemLS(LOGS_KEY, logs);
   }, [logs]);
 
