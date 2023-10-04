@@ -1,10 +1,6 @@
-import { useEffect } from "react";
 import "./BreedInfo.scss";
 
 import { useLocation } from "react-router-dom";
-import { useQuery } from "react-query";
-
-import { getBreedById } from "../../services/breeds.service";
 
 import { LINK } from "../../routes/links";
 import ICategory from "../../models/ICategory";
@@ -12,6 +8,7 @@ import ICategory from "../../models/ICategory";
 import Breadcrumbs from "../../components/UI/Breadcrumbs/Breadcrumbs";
 import Loader from "../../components/UI/Loader/Loader";
 import useMatchMedia from "../../hooks/useMatchMedia";
+import useBreedInfo from "../../hooks/useBreedInfo";
 
 interface ILocacation {
   state: {
@@ -24,14 +21,8 @@ function BreedInfo() {
   const {
     state: { item, index },
   }: ILocacation = useLocation();
-  const { data, isFetching } = useQuery(["breed-info", item.id], () =>
-    getBreedById(item.id)
-  );
+  const { data, isFetching } = useBreedInfo(item.id);
   const { isMobile } = useMatchMedia();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   return (
     <section className="pages breed-info">
