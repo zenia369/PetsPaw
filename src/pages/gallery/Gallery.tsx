@@ -119,51 +119,51 @@ function GalleryPage() {
           upload
         </button>
       </Breadcrumbs>
-      {isLoading && breeds && petsPhotos ? (
-        <>
-          <div className="gallery__controls">
+      {breeds && (
+        <div className="gallery__controls">
+          <DropDownList
+            click={(arg: string | number) =>
+              dispatch({ type: "order", payload: arg })
+            }
+            listItmes={order.list}
+            label="ORDER"
+            dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
+            dropWidthClass="infinity"
+          />
+          <DropDownList
+            click={(arg: string | number) =>
+              dispatch({ type: "type", payload: arg })
+            }
+            listItmes={type.list}
+            label="TYPE"
+            dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
+            dropWidthClass="infinity"
+          />
+          <DropDownList
+            click={setActiveBreeds}
+            listItmes={breeds}
+            label="BREED"
+            dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
+            dropWidthClass="infinity"
+          />
+          <div>
             <DropDownList
               click={(arg: string | number) =>
-                dispatch({ type: "order", payload: arg })
+                dispatch({ type: "limit", payload: arg })
               }
-              listItmes={order.list}
-              label="ORDER"
+              listItmes={limit.list}
+              label="LIMIT"
               dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
               dropWidthClass="infinity"
             />
-            <DropDownList
-              click={(arg: string | number) =>
-                dispatch({ type: "type", payload: arg })
-              }
-              listItmes={type.list}
-              label="TYPE"
-              dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
-              dropWidthClass="infinity"
-            />
-            <DropDownList
-              click={setActiveBreeds}
-              listItmes={breeds}
-              label="BREED"
-              dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
-              dropWidthClass="infinity"
-            />
-            <div>
-              <DropDownList
-                click={(arg: string | number) =>
-                  dispatch({ type: "limit", payload: arg })
-                }
-                listItmes={limit.list}
-                label="LIMIT"
-                dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
-                dropWidthClass="infinity"
-              />
-              <button type="button" onClick={() => refetchPetsPhotos()}>
-                {svgArrowCircle}
-              </button>
-            </div>
+            <button type="button" onClick={() => refetchPetsPhotos()}>
+              {svgArrowCircle}
+            </button>
           </div>
-          <Gallery list={petsPhotos} isFavorite={false} isOpen />
-        </>
+        </div>
+      )}
+      {isLoading && petsPhotos ? (
+        <Gallery list={petsPhotos} isFavorite={false} isOpen />
       ) : (
         <Loader />
       )}
