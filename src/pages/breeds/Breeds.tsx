@@ -4,7 +4,6 @@ import "./Breeds.scss";
 import setActiveItem from "../../helpers/setActiveItem";
 
 import useBreeds from "../../hooks/useBreeds";
-import useBreedsList from "../../hooks/useBreedsList";
 
 import { LINK } from "../../routes/links";
 
@@ -13,6 +12,7 @@ import DropDownList from "../../components/UI/DropDownList/DropDownList";
 import Breadcrumbs from "../../components/UI/Breadcrumbs/Breadcrumbs";
 import Loader from "../../components/UI/Loader/Loader";
 import Gallery from "../../components/Gallery/Gallery";
+import getBreedsId from "../../helpers/getBreedsId";
 
 const initialState = {
   limit: {
@@ -60,35 +60,28 @@ function reducers(
 function Breeds() {
   const [{ limit, order }, dispatch] = useReducer(reducers, initialState);
 
-  const { breeds, isFetchedBreeds, reducedBreedsId, setActiveBreeds } =
-    useBreeds();
-  const { breedsList, isFetchingList, refetchList } = useBreedsList({
-    reducedBreedsId,
-    isFetchedBreeds,
-    params: {
-      limit: limit.active,
-      order: order.active,
-    },
-    queryTags: ["breeds-page-list", order.active, reducedBreedsId],
-  });
+  const { breeds, setActiveBreeds, petsPhotos, refetchPetsPhotos, isLoading } =
+    useBreeds({
+      pageQueryTag: "BREEDS_PAGE",
+      params: {
+        limit: limit.active,
+        order: order.active,
+      },
+    });
 
-  const setLimit = useCallback(
-    async (arg: number | string) => {
-      await dispatch({ type: "limit", payload: arg });
-      refetchList();
-    },
-    [refetchList]
-  );
-  const sortList = useCallback((type: "ASC" | "DESC") => {
-    dispatch({ type: "order", payload: type });
-  }, []);
-
-  const isLoading = isFetchedBreeds && breeds && !isFetchingList && breedsList;
+  const setLimit = async (arg: number | string) => {
+    await dispatch({ type: "limit", payload: arg });
+    refetchPetsPhotos();
+  };
+  const sortList = async (orderType: "ASC" | "DESC") => {
+    await dispatch({ type: "order", payload: orderType });
+    refetchPetsPhotos();
+  };
 
   return (
     <section className="pages breeds">
       <Breadcrumbs pageName={LINK.breeds}>
-        {isLoading && (
+        {breeds && (
           <div className="breeds__controls">
             <DropDownList listItmes={breeds} click={setActiveBreeds} />
             <DropDownList
@@ -114,8 +107,12 @@ function Breeds() {
           </div>
         )}
       </Breadcrumbs>
-      {isLoading ? (
-        <Gallery list={breedsList} isOpen isFavorite={false} />
+      {isLoading && petsPhotos ? (
+        <Gallery
+          list={[...petsPhotos].slice(0, limit.active)}
+          isOpen
+          isFavorite={false}
+        />
       ) : (
         <Loader />
       )}

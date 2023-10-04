@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import "./Gallery.scss";
 
 import useBreeds from "../../hooks/useBreeds";
-import useBreedsList from "../../hooks/useBreedsList";
+import useMatchMedia from "../../hooks/useMatchMedia";
 
 import setActiveItem from "../../helpers/setActiveItem";
 
@@ -13,7 +13,6 @@ import Loader from "../../components/UI/Loader/Loader";
 import Modal, { useModal } from "../../components/UI/Modal/Modal";
 import Gallery from "../../components/Gallery/Gallery";
 import Upload from "./components/Upload/Upload";
-import useMatchMedia from "../../hooks/useMatchMedia";
 
 const initialState = {
   limit: {
@@ -85,22 +84,21 @@ function reducers(
   }
 }
 
-const DEFAULTDropWidthStyles = { background: "var(--white-black)" };
+const DEFAULT_DROPDOWN_WIDTH_STYLE = { background: "var(--white-black)" };
 
 function GalleryPage() {
   const [{ limit, order, type }, dispatch] = useReducer(reducers, initialState);
-  const { breeds, isFetchedBreeds, reducedBreedsId, setActiveBreeds } =
-    useBreeds();
-  const { breedsList, isFetchingList, refetchList } = useBreedsList({
-    reducedBreedsId,
-    isFetchedBreeds,
-    params: {
-      limit: limit.active,
-      order: order.active,
-      mime_types: type.active,
-    },
-    queryTags: ["gallery-page-list"],
-  });
+  const { breeds, petsPhotos, refetchPetsPhotos, setActiveBreeds, isLoading } =
+    useBreeds({
+      pageQueryTag: "GALLERY_PAGE",
+      params: {
+        limit: limit.active,
+        order: order.active,
+        mime_types: type.active,
+      },
+      addPetsPhotosTagToQuery: false,
+    });
+
   const [modal, setModal] = useModal();
   const { isMobile } = useMatchMedia();
 
@@ -121,7 +119,7 @@ function GalleryPage() {
           upload
         </button>
       </Breadcrumbs>
-      {isFetchedBreeds && breeds && !isFetchingList && breedsList ? (
+      {isLoading && breeds && petsPhotos ? (
         <>
           <div className="gallery__controls">
             <DropDownList
@@ -130,7 +128,7 @@ function GalleryPage() {
               }
               listItmes={order.list}
               label="ORDER"
-              dropWidthStyles={DEFAULTDropWidthStyles}
+              dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
               dropWidthClass="infinity"
             />
             <DropDownList
@@ -139,14 +137,14 @@ function GalleryPage() {
               }
               listItmes={type.list}
               label="TYPE"
-              dropWidthStyles={DEFAULTDropWidthStyles}
+              dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
               dropWidthClass="infinity"
             />
             <DropDownList
               click={setActiveBreeds}
               listItmes={breeds}
               label="BREED"
-              dropWidthStyles={DEFAULTDropWidthStyles}
+              dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
               dropWidthClass="infinity"
             />
             <div>
@@ -156,19 +154,15 @@ function GalleryPage() {
                 }
                 listItmes={limit.list}
                 label="LIMIT"
-                dropWidthStyles={DEFAULTDropWidthStyles}
+                dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
                 dropWidthClass="infinity"
               />
-              <button type="button" onClick={() => refetchList()}>
+              <button type="button" onClick={() => refetchPetsPhotos()}>
                 {svgArrowCircle}
               </button>
             </div>
           </div>
-          {breedsList.length ? (
-            <Gallery list={breedsList} isFavorite={false} isOpen />
-          ) : (
-            <p>Empty list</p>
-          )}
+          <Gallery list={petsPhotos} isFavorite={false} isOpen />
         </>
       ) : (
         <Loader />
