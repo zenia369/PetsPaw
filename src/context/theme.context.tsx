@@ -5,7 +5,6 @@ import {
   useMemo,
   useLayoutEffect,
   useCallback,
-  ReactNode,
 } from "react";
 import { getItemLS, setItemLS } from "../helpers/localStorage";
 
@@ -33,7 +32,7 @@ const getThemeFromLS = () => {
   }
 };
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+export function ThemeProvider({ children }: { children: JSX.Element }) {
   const [theme, setTheme] = useState<Themes>(getThemeFromLS);
 
   useLayoutEffect(() => {
