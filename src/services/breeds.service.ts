@@ -5,8 +5,7 @@ import ICategory from "../models/ICategory";
 import { IDropDownItem } from "../models/IDropDownList";
 
 const ALL_CATEGORIES_NAME = "All Cateories";
-
-export const BREEDS_QUERYTAG = "breeds";
+export const ALL_BREEDS = "All";
 
 export const getCategories = async (): Promise<IDropDownItem[]> => {
   const { data } = await appApi.get<IDropDownItem[]>("categories");
@@ -59,7 +58,7 @@ export const getBreeds = async () => {
 
   return [
     {
-      name: "All",
+      name: ALL_BREEDS,
       active: true,
       id: Date.now(),
     },
@@ -68,7 +67,7 @@ export const getBreeds = async () => {
 };
 
 export const getListWithParams = async (params: object) => {
-  const { data } = await appApi.get("images/search", {
+  const { data } = await appApi.get<IBreed[]>("images/search", {
     params,
   });
 
