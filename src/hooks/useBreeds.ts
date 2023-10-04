@@ -1,47 +1,69 @@
-import { useCallback, useMemo } from "react";
 import { useQuery, useQueryClient } from "react-query";
-
-import { BREEDS_QUERYTAG, getBreeds } from "../services/breeds.service";
+import { getBreeds, getListWithParams } from "../services/breeds.service";
 import setActiveItem from "../helpers/setActiveItem";
-import { IDropDownItem } from "../models/IDropDownList";
+import getBreedsId from "../helpers/getBreedsId";
 
-export default () => {
+interface IUseBreeds {
+  params: object;
+  pageQueryTag: string;
+  addPetsPhotosTagToQuery?: boolean;
+}
+
+export default ({
+  params,
+  pageQueryTag,
+  addPetsPhotosTagToQuery = true,
+}: IUseBreeds) => {
   const queryClient = useQueryClient();
 
   const { data: breeds, isFetched: isFetchedBreeds } = useQuery(
-    BREEDS_QUERYTAG,
+    ["breeds", pageQueryTag],
     getBreeds,
     {
       refetchOnMount: false,
     }
   );
 
-  const setActiveBreeds = useCallback(
-    (arg: string | number) => {
-      if (breeds) {
-        queryClient.setQueryData(
-          BREEDS_QUERYTAG,
-          setActiveItem(breeds, arg, "name").newList
-        );
-      }
+  const {
+    data: petsPhotos,
+    isFetching: isFetchingPetsPhotos,
+    refetch: refetchPetsPhotos,
+  } = useQuery(
+    [
+      "pet-photos",
+      pageQueryTag,
+      addPetsPhotosTagToQuery && getBreedsId(breeds),
+    ],
+    ({ queryKey }) => {
+      const [, , reducedBreedsId] = queryKey;
+      return getListWithParams({
+        breed_ids: reducedBreedsId || getBreedsId(breeds),
+        ...params,
+      });
     },
-    [breeds, queryClient]
+    {
+      enabled: isFetchedBreeds,
+      refetchOnMount: false,
+    }
   );
 
-  const reducedBreedsId = useMemo(() => {
+  const setActiveBreeds = (arg: string | number) => {
     if (breeds) {
-      const activeB = breeds.find((b) => b.active) as IDropDownItem;
-      return activeB.name === "All"
-        ? breeds.map((b) => b.id).toString()
-        : activeB.id;
+      queryClient.setQueryData(
+        ["breeds", pageQueryTag],
+        setActiveItem(breeds, arg, "name").newList
+      );
     }
-    return "";
-  }, [breeds]);
+  };
+
+  const isLoading =
+    isFetchedBreeds && breeds && !isFetchingPetsPhotos && petsPhotos;
 
   return {
+    isLoading,
+    petsPhotos,
     breeds,
-    isFetchedBreeds,
-    reducedBreedsId,
+    refetchPetsPhotos,
     setActiveBreeds,
   };
 };
