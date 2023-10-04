@@ -1,4 +1,4 @@
-import { getItemLS, setItemLS } from "./LocalStorage";
+import { getItemLS, setItemLS } from "./localStorage";
 
 export default (): string => {
   try {

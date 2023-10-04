@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import IReaction, { IReactionAction, IReactionType } from "../models/IReaction";
 
 import { currentTime } from "../helpers/getDate";
-import { getItemLS, setItemLS } from "../helpers/LocalStorage";
+import { getItemLS, setItemLS } from "../helpers/localStorage";
 
 const LOGS_KEY = "logs";
 
