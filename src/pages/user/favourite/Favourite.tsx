@@ -1,7 +1,6 @@
-import Reaction from "../Reaction";
-
-import { LINK } from "../../../../routes/links";
-import { EnamReactionType } from "../../../../models/IReaction";
+import { EnamReactionType } from "../../../models/IReaction";
+import { LINK } from "../../../routes/links";
+import Reaction from "../components/Reaction";
 
 export default function Favourite() {
   return (

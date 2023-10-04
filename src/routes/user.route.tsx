@@ -6,11 +6,9 @@ import { LINK } from "./links";
 import PageLoader from "../components/UI/PageLoader/PageLoader";
 
 const Search = lazy(() => import("../pages/user/search/Search"));
-const Dislike = lazy(() => import("../pages/user/reaction/components/Dislike"));
-const Favourite = lazy(
-  () => import("../pages/user/reaction/components/Favourite")
-);
-const Likes = lazy(() => import("../pages/user/reaction/components/Likes"));
+const Dislike = lazy(() => import("../pages/user/dislike/Dislike"));
+const Favourite = lazy(() => import("../pages/user/favourite/Favourite"));
+const Likes = lazy(() => import("../pages/user/likes/Likes"));
 
 const route: RouteObject = {
   path: LINK.user,

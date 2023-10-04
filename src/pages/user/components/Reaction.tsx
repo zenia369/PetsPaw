@@ -1,6 +1,4 @@
-/* eslint-disable no-nested-ternary */
-import { useCallback, useMemo } from "react";
-import "./Reaction.scss";
+import { useMemo } from "react";
 
 import { useQuery, useQueryClient } from "react-query";
 
@@ -30,36 +28,36 @@ function Reaction({ pageType, filterBy }: IReaction) {
     () => getListImgById(logsId)
   );
 
-  const removeFavourite = useCallback(
-    (id: string) => {
-      if (data) {
-        removeLog(id);
-        queryClient.setQueryData(
-          [pageType, logsId.toString()],
-          data.filter((d) => d.id !== id)
-        );
-      }
-    },
-    [removeLog, data, pageType, logsId, queryClient]
-  );
+  const removeFavourite = (id: string) => {
+    if (data) {
+      removeLog(id);
+      queryClient.setQueryData(
+        [pageType, logsId.toString()],
+        data.filter((d) => d.id !== id)
+      );
+    }
+  };
+
+  const galleryProps =
+    filterBy === EnamReactionType.favourite
+      ? {
+          list: data || [],
+          isFavorite: true,
+          isOpen: false,
+          removeFavourite,
+        }
+      : {
+          list: data || [],
+          isFavorite: false,
+          isOpen: false,
+          removeFavourite: undefined,
+        };
 
   return (
     <section className="pages reaction">
       <Breadcrumbs pageName={pageType} />
-      {!isLoading && data ? (
-        filterBy === EnamReactionType.favourite ? (
-          <Gallery
-            list={data}
-            isFavorite
-            isOpen={false}
-            removeFavourite={removeFavourite}
-          />
-        ) : (
-          <Gallery list={data} isFavorite={false} isOpen={false} />
-        )
-      ) : (
-        <Loader />
-      )}
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      {!isLoading && data ? <Gallery {...galleryProps} /> : <Loader />}
     </section>
   );
 }
