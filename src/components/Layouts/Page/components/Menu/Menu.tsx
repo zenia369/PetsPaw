@@ -3,17 +3,21 @@ import "./Menu.scss";
 
 import { useNavigate } from "react-router-dom";
 
-import useMatchMedia from "../../../../hooks/useMatchMedia";
+import useMatchMedia from "../../../../../hooks/useMatchMedia";
 
 import {
   HEADER_NAV_LIST_DATA,
   HeaderNavListItem,
-} from "../../../Header/Header";
-import Button from "../../../UI/Button/Button";
-import Modal, { useModal } from "../../../UI/Modal/Modal";
-import { svgMenu } from "../../../../assets/svgs";
+} from "../../../../Header/Header";
+import Button from "../../../../UI/Button/Button";
+import Modal, { useModal } from "../../../../UI/Modal/Modal";
+import { svgMenu } from "../../../../../assets/svgs";
 
-function MenuModal({ handleClick }: { handleClick: (arg: string) => void }) {
+interface MenuModalProps {
+  handleClick: (arg: string) => void;
+}
+
+function MenuModal({ handleClick }: MenuModalProps) {
   const modalItemId = useId();
   const { isMobile } = useMatchMedia();
 

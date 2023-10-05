@@ -6,7 +6,7 @@ import userRoute from "./user.route";
 
 import { LINK } from "./links";
 import PageLoader from "../components/UI/PageLoader/PageLoader";
-import Page from "../components/Page/Page";
+import Page from "../components/Layouts/Page/Page";
 import Header from "../components/Header/Header";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 

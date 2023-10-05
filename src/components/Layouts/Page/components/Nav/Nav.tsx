@@ -3,14 +3,18 @@ import "./Nav.scss";
 
 import { NavLink } from "react-router-dom";
 
-import { LINK } from "../../../../routes/links";
+import { LINK } from "../../../../../routes/links";
 
-import useMatchMedia from "../../../../hooks/useMatchMedia";
+import useMatchMedia from "../../../../../hooks/useMatchMedia";
 
 import Menu from "../Menu/Menu";
-import Search from "../../../Search/Search";
-import { sgvFavourites, svgDislikes, svgLikes } from "../../../../assets/svgs";
-import Button from "../../../UI/Button/Button";
+import Search from "../../../../Search/Search";
+import {
+  sgvFavourites,
+  svgDislikes,
+  svgLikes,
+} from "../../../../../assets/svgs";
+import Button from "../../../../UI/Button/Button";
 
 const pages = [
   {

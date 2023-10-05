@@ -8,9 +8,9 @@ import userRoute from "./user.route";
 import { LINK } from "./links";
 import PageLoader from "../components/UI/PageLoader/PageLoader";
 import Greeting from "../components/Greeting/Greeting";
-import Page from "../components/Page/Page";
+import Page from "../components/Layouts/Page/Page";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
-import Home from "../pages/home/Home";
+import Home from "../components/Layouts/Home/Home";
 
 const Voting = lazy(() => import("../pages/voting/Voting"));
 const Gallery = lazy(() => import("../pages/gallery/Gallery"));
