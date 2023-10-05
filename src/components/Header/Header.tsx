@@ -9,9 +9,9 @@ import { LINK } from "../../routes/links";
 import logo from "../../assets/images/logo.png";
 import eye from "../../assets/images/eye.png";
 import eye_close from "../../assets/images/eye-close.png";
-import nav1 from "../../assets/images/vote-table.svg";
-import nav2 from "../../assets/images/pet-breeds.svg";
-import nav3 from "../../assets/images/images-search.svg";
+import nav1 from "../../assets/images/vote-table.png";
+import nav2 from "../../assets/images/pet-breeds.png";
+import nav3 from "../../assets/images/images-search.png";
 import useMatchMedia from "../../hooks/useMatchMedia";
 
 export const HEADER_NAV_LIST_DATA = [
