@@ -10,7 +10,7 @@ export default (breeds: IDropDownItem[] | undefined) => {
           .filter((b) => b.name !== ALL_BREEDS)
           .map((b) => b.id)
           .join(",")
-      : activeB.id;
+      : String(activeB.id);
   }
   return "";
 };
