@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     "react/react-in-jsx-scope": 0,
     "react/self-closing-comp": 0,
-    "prettier/prettier": ["off", { singleQuote: false }],
+    "prettier/prettier": [0, { singleQuote: false }],
+    "import/no-extraneous-dependencies": 0,
   },
 };
