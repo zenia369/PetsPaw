@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
-
-import { createBrowserRouter } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 
 import breedsRoute from "./breeds.route";
 import userRoute from "./user.route";
@@ -11,11 +10,12 @@ import Greeting from "../components/Greeting/Greeting";
 import Page from "../components/Layouts/Page/Page";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Home from "../components/Layouts/Home/Home";
+import FullPageErrorFallback from "../components/UI/Errors/FullPageErrorFallback";
 
 const Voting = lazy(() => import("../pages/voting/Voting"));
 const Gallery = lazy(() => import("../pages/gallery/Gallery"));
 
-const router = createBrowserRouter([
+const router: RouteObject[] = [
   {
     path: "/",
     element: (
@@ -23,6 +23,7 @@ const router = createBrowserRouter([
         <Home />
       </ScrollToTop>
     ),
+    errorElement: <FullPageErrorFallback />,
     children: [
       {
         index: true,
@@ -54,6 +55,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
 
 export default router;

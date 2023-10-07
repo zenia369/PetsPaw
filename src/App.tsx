@@ -1,32 +1,22 @@
-import { RouterProvider } from "react-router-dom";
-import "./App.scss";
-
-import { QueryClient, QueryClientProvider } from "react-query";
+import { createBrowserRouter } from "react-router-dom";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import router from "./routes/root";
 import routerAdaptive from "./routes/root.adaptive";
-import { ThemeProvider } from "./context/theme.context";
 
 import useMatchMedia from "./hooks/useMatchMedia";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+import AppProviders from "./AppProviders";
+import "./App.scss";
 
 function App() {
   const { isDesktop } = useMatchMedia();
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={isDesktop ? router : routerAdaptive} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </ThemeProvider>
+    <AppProviders
+      appRouter={createBrowserRouter(isDesktop ? router : routerAdaptive)}
+    >
+      <ReactQueryDevtools initialIsOpen={false} />
+    </AppProviders>
   );
 }
 
