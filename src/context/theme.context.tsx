@@ -8,7 +8,7 @@ import {
 } from "react";
 import { getItemLS, setItemLS } from "../helpers/localStorage";
 
-const THEME_LOCAL_STORAGE_KEY = "PETS_PAW_THEME_LOCAL_STORAGE_KEY";
+export const THEME_LOCAL_STORAGE_KEY = "PETS_PAW_THEME_LOCAL_STORAGE_KEY";
 
 export enum Themes {
   light = "light-theme",
@@ -18,10 +18,7 @@ export enum Themes {
 const ThemeContext = createContext<{
   theme: Themes;
   toggleTheme: () => void;
-}>({
-  theme: Themes.light,
-  toggleTheme: () => {},
-});
+} | null>(null);
 
 const getThemeFromLS = () => {
   try {
