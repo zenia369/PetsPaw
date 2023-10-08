@@ -7,7 +7,7 @@ import galleryList from "../../helpers/galleryList";
 import useMatchMedia from "../../hooks/useMatchMedia";
 
 import IBreed from "../../models/IBreed";
-import IReaction from "../../models/IReaction";
+import { IReaction } from "../../models/IReaction";
 
 import Button from "../UI/Button/Button";
 import { sgvFavourites } from "../../assets/svgs";

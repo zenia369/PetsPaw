@@ -1,11 +1,14 @@
-import React from "react";
+import { ReactNode, memo } from "react";
 
 import { sgvFavourites, svgDislikes, svgLikes } from "../../../../assets/svgs";
 import "./VotingLogItem.scss";
 
-import IReaction from "../../../../models/IReaction";
+import { IReaction, EnamReactionType } from "../../../../models/IReaction";
 
-const typesItems = {
+const typesItems: Record<
+  keyof typeof EnamReactionType,
+  { name: string; svg: ReactNode }
+> = {
   like: {
     name: "Likes",
     svg: svgLikes,
@@ -32,4 +35,4 @@ function VotingLogItem({ type, date, id, action }: IReaction) {
   );
 }
 
-export default React.memo(VotingLogItem);
+export default memo(VotingLogItem);
