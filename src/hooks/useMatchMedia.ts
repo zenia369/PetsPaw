@@ -18,7 +18,11 @@ export default () => {
   const [state, setState] = useState(screenMatches);
 
   useLayoutEffect(() => {
-    const handler = () => setState(screenMatches);
+    const handler = () => {
+      // console.log("mediaQueryLists", mediaQueryLists, screenMatches);
+
+      setState(screenMatches);
+    };
     mediaQueryLists.forEach((s) => s.addEventListener("change", handler));
 
     return () =>
