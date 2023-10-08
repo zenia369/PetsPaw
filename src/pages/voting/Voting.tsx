@@ -3,11 +3,7 @@ import "./Voting.scss";
 
 import { useQuery } from "react-query";
 
-import {
-  EnamReactionType,
-  IReactionAction,
-  IReactionType,
-} from "../../models/IReaction";
+import { EnamReactionType, EnamReactionAction } from "../../models/IReaction";
 import votingService from "../../services/voting.service";
 import useLogs from "../../hooks/useLogs";
 
@@ -26,7 +22,7 @@ function Voting() {
   const { isMobile } = useMatchMedia();
 
   const hendleReaction = useCallback(
-    (type: IReactionType, action: IReactionAction) => {
+    (type: EnamReactionType, action: EnamReactionAction) => {
       if (data) {
         addLog(type, action, data.id);
         refetch();
@@ -58,21 +54,30 @@ function Voting() {
             <Button
               type="big_btn"
               click={() =>
-                hendleReaction(EnamReactionType.like, "add to Likes")
+                hendleReaction(
+                  EnamReactionType.like,
+                  EnamReactionAction.AddToLikes
+                )
               }
               svg={svgLikes}
             />
             <Button
               type="big_btn"
               click={() =>
-                hendleReaction(EnamReactionType.favourite, "add to Favourites")
+                hendleReaction(
+                  EnamReactionType.favourite,
+                  EnamReactionAction.AddToFavourites
+                )
               }
               svg={sgvFavourites}
             />
             <Button
               type="big_btn"
               click={() =>
-                hendleReaction(EnamReactionType.dislike, "add to Dislikes")
+                hendleReaction(
+                  EnamReactionType.dislike,
+                  EnamReactionAction.AddToDislikes
+                )
               }
               svg={svgDislikes}
             />

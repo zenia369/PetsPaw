@@ -1,20 +1,17 @@
-export enum EnamReactionType {
+export const enum EnamReactionType {
   like = "like",
   favourite = "favourite",
   dislike = "dislike",
 }
-export type IReactionType =
-  | EnamReactionType.like
-  | EnamReactionType.favourite
-  | EnamReactionType.dislike;
-export type IReactionAction =
-  | "add to Likes"
-  | "add to Favourites"
-  | "add to Dislikes";
+export const enum EnamReactionAction {
+  AddToLikes = "add to Likes",
+  AddToFavourites = "add to Favourites",
+  AddToDislikes = "add to Dislikes",
+}
 
-export default interface IReaction {
-  type: IReactionType;
+export interface IReaction {
+  type: EnamReactionType;
   date: string;
-  action: IReactionAction;
+  action: EnamReactionAction;
   id: string;
 }
