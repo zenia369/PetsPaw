@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from "react";
+import { useReducer } from "react";
 import "./Breeds.scss";
 
 import setActiveItem from "../../helpers/setActiveItem";
@@ -12,7 +12,6 @@ import DropDownList from "../../components/UI/DropDownList/DropDownList";
 import Breadcrumbs from "../../components/UI/Breadcrumbs/Breadcrumbs";
 import Loader from "../../components/UI/Loader/Loader";
 import Gallery from "../../components/Gallery/Gallery";
-import getBreedsId from "../../helpers/getBreedsId";
 
 const initialState = {
   limit: {

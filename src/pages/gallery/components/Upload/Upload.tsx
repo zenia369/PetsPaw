@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { DragEvent, useMemo, useRef, useState } from "react";
+import { DragEvent, useMemo, useRef, useState, ChangeEvent } from "react";
 import "./Upload.scss";
 
 import { useMutation } from "react-query";
@@ -32,7 +32,8 @@ function Upload() {
       inputFileRef.current.click();
     }
   };
-  const handleChangeInputFile = (event: any) => {
+  const handleChangeInputFile = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) return;
     setFile(event.target.files[0]);
   };
   const handleDragDropFile = (event: DragEvent) => {

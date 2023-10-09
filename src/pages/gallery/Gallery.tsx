@@ -104,11 +104,11 @@ function GalleryPage() {
 
   return (
     <section className={`pages gallery ${isMobile ? "gallery-mobile" : ""}`}>
-      {modal ? (
+      {modal && (
         <Modal closeHandler={setModal}>
           <Upload />
         </Modal>
-      ) : null}
+      )}
       <Breadcrumbs pageName="gallery">
         <button
           className="gallery__upload-btn"

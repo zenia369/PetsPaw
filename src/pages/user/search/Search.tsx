@@ -4,7 +4,7 @@ import "./Search.scss";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 
-import { getBreedsByQuery } from "../../../services/app.service";
+import { getBreedsWithParams } from "../../../services/breeds.service";
 
 import { LINK } from "../../../routes/links";
 import IBreed from "../../../models/IBreed";
@@ -12,13 +12,15 @@ import Breadcrumbs from "../../../components/UI/Breadcrumbs/Breadcrumbs";
 import Loader from "../../../components/UI/Loader/Loader";
 import Gallery from "../../../components/Gallery/Gallery";
 
+type TLocation = { state: { search: string[] } };
+
 function Search() {
   const {
     state: { search },
-  }: { state: { search: string[] } } = useLocation();
+  }: TLocation = useLocation();
   const { data, isFetching } = useQuery<IBreed[]>(
     [LINK.search, search.toString()],
-    () => getBreedsByQuery(search),
+    () => getBreedsWithParams({ limit: 10, breed_ids: search.toString() }),
     {
       refetchOnMount: false,
     }
