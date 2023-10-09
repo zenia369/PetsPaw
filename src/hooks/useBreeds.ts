@@ -1,10 +1,14 @@
 import { useQuery, useQueryClient } from "react-query";
-import { getBreeds, getListWithParams } from "../services/breeds.service";
+import { getBreeds, getBreedsWithParams } from "../services/breeds.service";
 import setActiveItem from "../helpers/setActiveItem";
 import getBreedsId from "../helpers/getBreedsId";
 
 interface IUseBreeds {
-  params: object;
+  params: {
+    limit: number;
+    order: string;
+    mime_types?: string;
+  };
   pageQueryTag: string;
   addPetsPhotosTagToQuery?: boolean;
 }
@@ -36,7 +40,7 @@ export default ({
     ],
     ({ queryKey }) => {
       const [, , reducedBreedsId] = queryKey;
-      return getListWithParams({
+      return getBreedsWithParams({
         breed_ids: reducedBreedsId || getBreedsId(breeds),
         ...params,
       });
