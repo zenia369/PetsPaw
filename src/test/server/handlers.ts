@@ -39,7 +39,7 @@ const handlers = [
     );
   }),
   rest.get(`${baseURL}breeds`, (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(data));
+    return res(ctx.status(200), ctx.json(data.map((d) => d.breeds[0])));
   }),
   rest.post(`${baseURL}images/upload`, async (req, res, ctx) => {
     const body = (await req.arrayBuffer()) as unknown as FormData;
