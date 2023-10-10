@@ -20,18 +20,18 @@ export default ({
 }: IUseBreeds) => {
   const queryClient = useQueryClient();
 
-  const { data: breeds, isFetched: isFetchedBreeds } = useQuery(
-    ["breeds", pageQueryTag],
-    getBreeds,
-    {
-      refetchOnMount: false,
-    }
-  );
+  const {
+    data: breeds,
+    isLoading: isLoadingBreeds,
+    isFetched: isFetchedBreeds,
+  } = useQuery(["breeds", pageQueryTag], getBreeds, {
+    refetchOnMount: false,
+  });
 
   const {
     data: petsPhotos,
-    isFetching: isFetchingPetsPhotos,
     refetch: refetchPetsPhotos,
+    isLoading: isLoadingPetsPhotos,
   } = useQuery(
     [
       "pet-photos",
@@ -60,8 +60,7 @@ export default ({
     }
   };
 
-  const isLoading =
-    isFetchedBreeds && breeds && !isFetchingPetsPhotos && petsPhotos;
+  const isLoading = (isLoadingBreeds && isLoadingPetsPhotos) || !petsPhotos;
 
   return {
     isLoading,
