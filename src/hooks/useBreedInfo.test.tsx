@@ -13,7 +13,7 @@ afterEach(() => {
 });
 
 test("render hook should work", async () => {
-  const mockId = "uk0SrrBbQ";
+  const mockId = "N-94oSJ5T";
   const { result } = renderHook(() => useBreedInfo(mockId), { wrapper });
 
   await waitFor(() => expect(result.current.isLoading).toBeFalsy());
