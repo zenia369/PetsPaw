@@ -3,7 +3,7 @@ import {
   renderWithRoute,
   screen,
   userEvent,
-  waitForLoadingToFinish,
+  waitFor,
 } from "../../test/test-utils";
 
 async function renderVotingPage() {
@@ -21,7 +21,9 @@ test("user press like button", async () => {
   expect(screen.getAllByLabelText(/reaction item/i)).toHaveLength(1);
 
   await userEvent.click(screen.getByRole("link", { name: LINK.pageLikes }));
-  await waitForLoadingToFinish();
+  await waitFor(() =>
+    expect(screen.getAllByLabelText(/gallery item/i)).not.toHaveLength(0)
+  );
 
   expect(screen.queryByText(/No item found/i)).not.toBeInTheDocument();
   expect(screen.getAllByLabelText(/gallery item/i)).toHaveLength(1);
@@ -39,7 +41,9 @@ test("user press favourite button", async () => {
   await userEvent.click(
     screen.getByRole("link", { name: LINK.pageFavourites })
   );
-  await waitForLoadingToFinish();
+  await waitFor(() =>
+    expect(screen.getAllByLabelText(/gallery item/i)).not.toHaveLength(0)
+  );
 
   expect(screen.queryByText(/No item found/i)).not.toBeInTheDocument();
   expect(screen.getAllByLabelText(/gallery item/i)).toHaveLength(1);
@@ -66,7 +70,9 @@ test("user press dislike button", async () => {
   expect(screen.getAllByLabelText(/reaction item/i)).toHaveLength(1);
 
   await userEvent.click(screen.getByRole("link", { name: LINK.pageDislikes }));
-  await waitForLoadingToFinish();
+  await waitFor(() =>
+    expect(screen.getAllByLabelText(/gallery item/i)).not.toHaveLength(0)
+  );
 
   expect(screen.queryByText(/No item found/i)).not.toBeInTheDocument();
   expect(screen.getAllByLabelText(/gallery item/i)).toHaveLength(1);
