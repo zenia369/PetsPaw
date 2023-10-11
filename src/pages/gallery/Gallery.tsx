@@ -46,6 +46,7 @@ type TInitialState = typeof initialState;
 
 function reducers(
   state: TInitialState,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action: { type: string; payload: any }
 ) {
   switch (action.type) {
@@ -145,6 +146,7 @@ function GalleryPage() {
             label="BREED"
             dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
             dropWidthClass="infinity"
+            ariaLabel="category dropdown"
           />
           <div>
             <DropDownList
@@ -155,14 +157,19 @@ function GalleryPage() {
               label="LIMIT"
               dropWidthStyles={DEFAULT_DROPDOWN_WIDTH_STYLE}
               dropWidthClass="infinity"
+              ariaLabel="limit dropdown"
             />
-            <button type="button" onClick={() => refetchPetsPhotos()}>
+            <button
+              type="button"
+              onClick={() => refetchPetsPhotos()}
+              aria-label="fetch new pets photos"
+            >
               {svgArrowCircle}
             </button>
           </div>
         </div>
       )}
-      {isLoading && petsPhotos ? (
+      {!isLoading && petsPhotos ? (
         <Gallery list={petsPhotos} isFavorite={false} isOpen />
       ) : (
         <Loader />
