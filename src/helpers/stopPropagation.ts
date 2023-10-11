@@ -8,5 +8,9 @@ export default (
         stopPropagation: () => void;
       }
 ) => {
-  event?.stopPropagation();
+  if (typeof event?.stopPropagation !== "function") {
+    throw new Error("event.stopPropagation is not a function");
+  }
+
+  event.stopPropagation();
 };
