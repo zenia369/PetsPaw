@@ -32,6 +32,7 @@ type TInitialState = typeof initialState;
 
 function reducers(
   state: TInitialState,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action: { type: string; payload: any }
 ) {
   switch (action.type) {
@@ -82,12 +83,17 @@ function Breeds() {
       <Breadcrumbs pageName={LINK.breeds}>
         {breeds && (
           <div className="breeds__controls">
-            <DropDownList listItmes={breeds} click={setActiveBreeds} />
+            <DropDownList
+              listItmes={breeds}
+              click={setActiveBreeds}
+              ariaLabel="category dropdown"
+            />
             <DropDownList
               listItmes={limit.list}
               dropName="Limit: "
               dropWidthClass="small"
               click={setLimit}
+              ariaLabel="limit dropdown"
             />
             <button
               type="button"
@@ -106,7 +112,7 @@ function Breeds() {
           </div>
         )}
       </Breadcrumbs>
-      {isLoading && petsPhotos ? (
+      {!isLoading && petsPhotos ? (
         <Gallery
           list={[...petsPhotos].slice(0, limit.active)}
           isOpen
