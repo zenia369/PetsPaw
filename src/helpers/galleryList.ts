@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default (list: any[], step = 5) => {
   const newList: any[][] = [];
 

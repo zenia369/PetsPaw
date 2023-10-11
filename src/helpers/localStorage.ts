@@ -8,6 +8,6 @@ export const getItemLS = <T>(colectionName: string): T => {
   return data;
 };
 
-export const setItemLS = (colectionName: string, data: any) => {
+export const setItemLS = (colectionName: string, data: unknown) => {
   localStorage.setItem(colectionName, JSON.stringify(data));
 };
