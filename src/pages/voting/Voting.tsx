@@ -60,6 +60,7 @@ function Voting() {
                 )
               }
               svg={svgLikes}
+              aria-label="add to likes"
             />
             <Button
               type="big_btn"
@@ -70,6 +71,7 @@ function Voting() {
                 )
               }
               svg={sgvFavourites}
+              aria-label="add to favourites"
             />
             <Button
               type="big_btn"
@@ -80,15 +82,12 @@ function Voting() {
                 )
               }
               svg={svgDislikes}
+              aria-label="add to dislikes"
             />
           </div>
         </div>
         <div className="voting__content__logs">
-          {logs.length === 0 ? (
-            <div className="voting__content__logs__empty">
-              <p>No saved reaction</p>
-            </div>
-          ) : (
+          {logs.length ? (
             logs.map((votingItem, i) => (
               <VotingLogItem
                 key={`${logItemId + i}log`}
@@ -98,6 +97,10 @@ function Voting() {
                 type={votingItem.type}
               />
             ))
+          ) : (
+            <div className="voting__content__logs__empty">
+              <p>No saved reaction</p>
+            </div>
           )}
         </div>
       </div>

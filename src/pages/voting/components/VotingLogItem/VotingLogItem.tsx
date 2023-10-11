@@ -25,7 +25,10 @@ const typesItems: Record<
 
 function VotingLogItem({ type, date, id, action }: IReaction) {
   return (
-    <div className={`voting__content__logs__item ${type}`}>
+    <div
+      className={`voting__content__logs__item ${type}`}
+      aria-label="reaction item"
+    >
       <p className="voting__content__logs__item-date">{date}</p>
       <p className="voting__content__logs__item-info">
         Image ID: <span>{id}</span> was {action}
