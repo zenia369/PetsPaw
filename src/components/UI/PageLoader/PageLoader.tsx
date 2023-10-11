@@ -4,7 +4,7 @@ import ContentLoader from "react-content-loader";
 
 function PageLoader() {
   return (
-    <div className="page-loader">
+    <div className="page-loader" aria-label="loading">
       <ContentLoader
         speed={2}
         width="100%"

@@ -7,7 +7,7 @@ interface ILoader {
 
 function Loader({ addClass = [] }: ILoader) {
   return (
-    <div className="loader-cat-wrapper">
+    <div className="loader-cat-wrapper" aria-label="loading">
       <div className={`loader-cat  ${addClass.toString().replace(",", " ")}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

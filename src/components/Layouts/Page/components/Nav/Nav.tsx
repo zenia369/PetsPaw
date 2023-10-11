@@ -36,15 +36,15 @@ function Nav() {
   const { isDesktop, isMobile } = useMatchMedia();
 
   return (
-    <section className={`page_nav ${isMobile ? "page_nav-mobile" : ""}`}>
+    <nav className={`page_nav ${isMobile ? "page_nav-mobile" : ""}`}>
       {isDesktop ? null : <Menu />}
       <Search />
       {pages.map((el) => (
-        <NavLink key={linkId + el.path} to={el.path}>
+        <NavLink key={linkId + el.path} to={el.path} aria-label={el.path}>
           <Button svg={el.svg} type="middle_btn" />
         </NavLink>
       ))}
-    </section>
+    </nav>
   );
 }
 

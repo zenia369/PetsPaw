@@ -22,7 +22,7 @@ function MenuModal({ handleClick }: MenuModalProps) {
   const { isMobile } = useMatchMedia();
 
   return (
-    <div
+    <nav
       className={`menu__modal__list ${
         isMobile ? "header__nav__list-mobile" : ""
       }`}
@@ -37,7 +37,7 @@ function MenuModal({ handleClick }: MenuModalProps) {
           <HeaderNavListItem img={item.img} name={item.name} />
         </button>
       ))}
-    </div>
+    </nav>
   );
 }
 

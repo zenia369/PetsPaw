@@ -11,7 +11,8 @@ function DropDownList({
   dropWidthClass,
   dropWidthStyles,
   label,
-}: IDropDownList) {
+  ariaLabel = "dropdown", // eslint-disable-next-line react/require-default-props
+}: IDropDownList & { ariaLabel?: string }) {
   const listItemId = useId();
   const wrapperRef = useRef(null);
   const [open, setOpen] = useState(false);
@@ -37,14 +38,19 @@ function DropDownList({
         onClick={() => setOpen(!open)}
         className="drop__down__item__btn"
         style={dropWidthStyles}
+        aria-label={ariaLabel}
       >
         <span>{`${dropName} ${activeCategory.name}`}</span>
         {svgArrowDown}
       </button>
-      <ul className={`drop__down__item__list ${open && "active"}`}>
-        {listItmes.map((el) => (
+      <ul
+        className={`drop__down__item__list ${open && "active"}`}
+        aria-label={`${ariaLabel} list`}
+      >
+        {listItmes.map((el, idx) => (
           <li
-            key={`${listItemId}dropDown${el.name}`}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${listItemId}-dropDown-${idx}`}
             className={`drop__down__item__list_item ${el.active && "active"}`}
           >
             <button type="button" onClick={() => handleSelectItem(el.name)}>

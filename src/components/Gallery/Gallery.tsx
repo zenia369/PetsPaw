@@ -50,6 +50,7 @@ function Gallery({ list, isOpen, isFavorite, removeFavourite }: IGallery) {
               <li
                 key={el.id}
                 className={`gallery-ui__section__item gallery-ui__section__item-${edx}`}
+                aria-label="gallery item"
               >
                 <img
                   loading="lazy"
@@ -77,6 +78,7 @@ function Gallery({ list, isOpen, isFavorite, removeFavourite }: IGallery) {
                       styles={{
                         background: "var(--pink50-black)",
                       }}
+                      aria-label="remove favourite"
                     />
                   </div>
                 )}
