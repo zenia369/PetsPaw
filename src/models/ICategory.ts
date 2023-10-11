@@ -1,5 +1,7 @@
+import IBreed from "./IBreed";
+
 export default interface ICategory {
-  breeds: any[];
+  breeds: IBreed[];
   categories: {
     id: number;
     name: string;
