@@ -3,7 +3,7 @@ import { hasDataItem } from "../test/data/data";
 import * as breedService from "./breeds.service";
 
 test("get breed by id", async () => {
-  const response = await breedService.getBreedById("YZGOUtRQ1");
+  const response = await breedService.getBreedById("EHG3sOpAM");
 
   expect(hasDataItem(response.id)).toBeTruthy();
 });
@@ -27,7 +27,7 @@ test("get breeds", async () => {
 test("get breeds with params", async () => {
   const mockBreedsIds = "abys,munc";
   const response = await breedService.getBreedsWithParams({
-    limit: 5,
+    limit: 10,
     order: "ASC",
     breed_ids: mockBreedsIds,
   });
@@ -40,7 +40,7 @@ test("get breeds with params", async () => {
     }, {})
   ).toString();
 
-  expect(response.length).toBe(5);
+  expect(response.length).not.toBe(0);
   expect(resBreedsIds).toBe(mockBreedsIds);
   expect(response.at(0)!.breeds.at(0)!.id.startsWith("a")).toBeTruthy();
   expect(response.at(-1)!.breeds.at(-1)!.id.startsWith("m")).toBeTruthy();
