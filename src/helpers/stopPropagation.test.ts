@@ -12,7 +12,7 @@ test("should work correctly", () => {
 });
 
 test("should throw error", () => {
-  expect(() => stopPropagation({})).toThrowError(
+  expect(() => stopPropagation()).toThrowError(
     "event.stopPropagation is not a function"
   );
 });
