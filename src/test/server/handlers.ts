@@ -1,8 +1,7 @@
 import { rest } from "msw";
 import { getRandomDataItem, getDataItemById, data } from "../data/data";
 
-export const baseURL =
-  import.meta.env.VITE_BASE_URL || "http://localhost:3000/";
+export const baseURL = import.meta.env.VITE_BASE_URL;
 
 const handlers = [
   rest.get(`${baseURL}images/search`, (req, res, ctx) => {
