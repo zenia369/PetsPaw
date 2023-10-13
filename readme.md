@@ -5,7 +5,7 @@ It is repo for PetsPaw site.
 
 ## PetsPaw technology.
 
-There are used: react, react-query, react-router(v6), thecatApi, axios, skeleton, vite, typescript, eslint and prettier config, sass.
+There are used: react, react-query, react-router(v6), thecatApi, axios, skeleton, vite, typescript, vitest, react testing library, PWA(workbox), eslint and prettier config, sass.
 
 ### Summarize
 
